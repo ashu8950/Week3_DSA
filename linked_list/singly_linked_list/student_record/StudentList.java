@@ -6,6 +6,9 @@ class StudentList {
     // Add at the beginning
     public void addAtBeginning(int rollNo, String name, int age, String grade) {
         Student newStudent = new Student(rollNo, name, age, grade);
+        if(head == null) {
+        	head = newStudent;
+        }
         newStudent.next = head;
         head = newStudent;
     }
@@ -51,7 +54,12 @@ class StudentList {
     // Delete by roll number
     public void deleteByRollNo(int rollNo) {
         Student temp = head, prev = null;
-
+        
+        if (temp == null) {
+            System.out.println("Student with Roll No " + rollNo + " not found.");
+            return;
+        }
+        
         if (temp != null && temp.rollNo == rollNo) {
             head = temp.next;
             System.out.println("Student with Roll No " + rollNo + " deleted.");
@@ -63,11 +71,7 @@ class StudentList {
             temp = temp.next;
         }
 
-        if (temp == null) {
-            System.out.println("Student with Roll No " + rollNo + " not found.");
-            return;
-        }
-
+     
         prev.next = temp.next;
         System.out.println("Student with Roll No " + rollNo + " deleted.");
     }

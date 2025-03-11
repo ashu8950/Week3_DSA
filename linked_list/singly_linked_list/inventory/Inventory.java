@@ -6,6 +6,10 @@ public class Inventory {
     // Add item at beginning
     public void addAtBeginning(String name, int id, int quantity, double price) {
         Item newItem = new Item(name, id, quantity, price);
+        if(head == null) {
+        	head = newItem;
+        	return;
+        }
         newItem.next = head;
         head = newItem;
     }
